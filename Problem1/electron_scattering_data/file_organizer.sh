@@ -6,12 +6,14 @@ odd_directory="odd"
 mkdir -p "$even_directory"
 mkdir -p "$odd_directory"
 
-for file in electron_scattering_2023-10-04_sample_index*.bin; do
-    index=$(echo "$file" | grep -oP 'sample_index\K\d+')
+for file in *.bin; do
+    filename_no_extension=${file%.*}
+    index=${filename_no_extension: -1}
+    echo $index
 
-    if ((index % 2 == 0)); then
-        mv "$file" "$even_directory/"
-    else
-        mv "$file" "$odd_directory/"
-    fi
-done
+    #if ((index % 2 == 0)); then
+     #   mv "$file" "$even_directory/"
+    #else
+     #   mv "$file" "$odd_directory/"
+    #fi
+#done
