@@ -1,0 +1,17 @@
+#!/bin/bash
+
+even_directory="even"
+odd_directory="odd"
+
+mkdir -p "$even_directory"
+mkdir -p "$odd_directory"
+
+for file in "."/*; do
+    index=$(echo "$file" | grep -o '[0-9]\+')
+
+    if ((index % 2 == 0)); then
+        mv "$file" "$even_directory/"
+    else
+        mv "$file" "$odd_directory/"
+    fi
+done
