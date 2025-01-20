@@ -1,0 +1,9 @@
+#! /bin/bash
+echo "Enter a directory path to delete the files in."
+directory = $1
+file_remove(){
+    local filepath = $directory
+    find filepath -name '*.bin' | xargs rm
+}
+
+file_remove directory
